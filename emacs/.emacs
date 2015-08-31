@@ -7,13 +7,13 @@
 
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/"))
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize) ;; You might already have this line
 
 (require 'cl)
-;; Guarantee all packages are installed on start
+;; Guarantee all packages are installed on start  ;;prev: color-theme-solarized
 (defvar packages-list
-  '(color-theme-solarized
+  '(solarized-theme
     ergoemacs-mode
     multi-web-mode
     markdown-mode
@@ -42,30 +42,34 @@
 ;; Modes and Themes
 ;; ================
 
+;; solarized-theme
+(load-theme 'solarized-dark t)
+
+;; color-theme-solarized (future)
 ;; Switch Theme Solarized Light and Dark
 ;; Source: https://github.com/pyr/dot.emacs/blob/master/customizations/40-theme.el
 
-(custom-set-variables '(solarized-termcolors 256))
-(setq solarized-default-background-mode 'dark)
-(load-theme 'solarized t)
+;;(custom-set-variables '(solarized-termcolors 256))
+;;(setq solarized-default-background-mode 'dark)
+;;(load-theme 'solarized t)
 
-(defun set-background-mode (frame mode)
-  (set-frame-parameter frame 'background-mode mode)
-  (when (not (display-graphic-p frame))
-    (set-terminal-parameter (frame-terminal frame) 'background-mode mode))
-  (enable-theme 'solarized))
+;;(defun set-background-mode (frame mode)
+;;  (set-frame-parameter frame 'background-mode mode)
+;; (when (not (display-graphic-p frame))
+;;    (set-terminal-parameter (frame-terminal frame) 'background-mode mode))
+;;  (enable-theme 'solarized))
 
-(defun switch-theme ()
-  (interactive)
-  (let ((mode  (if (eq (frame-parameter nil 'background-mode) 'dark)
-                   'light 'dark)))
-    (set-background-mode nil mode)))
+;;(defun switch-theme ()
+;;  (interactive)
+;;  (let ((mode  (if (eq (frame-parameter nil 'background-mode) 'dark)
+;;                   'light 'dark)))
+;;    (set-background-mode nil mode)))
 
-(add-hook 'after-make-frame-functions
-          (lambda (frame) (set-background-mode frame solarized-default-background-mode)))
+;;(add-hook 'after-make-frame-functions
+;;         (lambda (frame) (set-background-mode frame solarized-default-background-mode)))
 
-(set-background-mode nil solarized-default-background-mode)
-(global-set-key (kbd "C-c t") 'switch-theme)
+;;(set-background-mode nil solarized-default-background-mode)
+;;(global-set-key (kbd "C-c t") 'switch-theme)
 
 ;; js2 mode
 (require 'js2-mode) 
@@ -87,9 +91,9 @@
 (setq ergoemacs-theme nil)
 (setq ergoemacs-keyboard-layout "programmer-dv")
 (require 'ergoemacs-mode)
-(ergoemacs-mode 1)
-(global-set-key (kbd "M-s") 'ergoemacs-end-of-line-or-what)
+(global-set-key "\M-s" 'ergoemacs-end-of-line-or-what)
 (global-set-key "\M-;" 'comment-dwim)
+(ergoemacs-mode 1)
 (put 'downcase-region 'disabled nil)
 (desktop-save-mode 1)
 
@@ -530,5 +534,3 @@
   (cd cdpath)
   (compile "make")
   (cd newpath))
-
-
