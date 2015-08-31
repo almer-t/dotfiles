@@ -13,10 +13,13 @@
 (require 'cl)
 ;; Guarantee all packages are installed on start  ;;prev: color-theme-solarized
 (defvar packages-list
-  '(solarized-theme
+  '(better-defaults
+    solarized-theme
     ergoemacs-mode
     multi-web-mode
     markdown-mode
+    magit
+    find-file-in-project
     )
   "List of packages needs to be installed at launch")
 
@@ -96,6 +99,13 @@
 (ergoemacs-mode 1)
 (put 'downcase-region 'disabled nil)
 (desktop-save-mode 1)
+
+;; Smex (ido)
+;;(global-set-key (kbd "A-x") 'smex)
+;;(global-set-key (kbd "A-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+;;(global-set-key (kbd "C-c C-c M-a") 'execute-extended-command)
+
 
 ; C mode key-bindings
 (define-key c-mode-map "\C-k" 'kill-line-and-reindent)

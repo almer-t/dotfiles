@@ -20,7 +20,8 @@
 ")
  '(scroll-error-top-bottom nil)
  '(set-mark-command-repeat-pop nil)
- '(shift-select-mode t))
+ '(shift-select-mode t)
+ '(smex-prompt-string "M-x "))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
