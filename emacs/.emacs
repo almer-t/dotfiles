@@ -8,6 +8,8 @@
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("marmalade" . "https://marmalade-repo.org/packages/"))
 (package-initialize) ;; You might already have this line
 
 (require 'cl)
@@ -20,6 +22,11 @@
     markdown-mode
     magit
     find-file-in-project
+    py-yapf
+    auto-complete
+    highlight-indentation
+    flymake-python-pyflakes
+    ipython
     )
   "List of packages needs to be installed at launch")
 
@@ -48,6 +55,11 @@
 ;; solarized-theme
 (load-theme 'solarized-dark t)
 
+;; Indentation highlight
+;;(require 'highlight-indentation)
+;;(set-face-background 'highlight-indentation-face "#e3e3d3")
+;;(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
 ;; color-theme-solarized (future)
 ;; Switch Theme Solarized Light and Dark
 ;; Source: https://github.com/pyr/dot.emacs/blob/master/customizations/40-theme.el
@@ -73,6 +85,15 @@
 
 ;;(set-background-mode nil solarized-default-background-mode)
 ;;(global-set-key (kbd "C-c t") 'switch-theme)
+
+;; flymake
+(require 'flymake-python-pyflakes)
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+
+;; autocomplete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
 
 ;; js2 mode
 (require 'js2-mode) 
