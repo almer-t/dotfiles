@@ -52,6 +52,8 @@
 ;; Modes and Themes
 ;; ================
 
+(set-face-attribute 'default nil :font "Hack 10")
+
 ;; solarized-theme
 (load-theme 'solarized-dark t)
 
