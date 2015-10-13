@@ -5,12 +5,12 @@
 ;; Custom Loaders
 ;; ==============
 
-(require 'package) ;; You might already have this line
+(require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
 	     '("marmalade" . "https://marmalade-repo.org/packages/"))
-(package-initialize) ;; You might already have this line
+(package-initialize)
 
 (require 'cl)
 ;; Guarantee all packages are installed on start  ;;prev: color-theme-solarized
@@ -48,6 +48,8 @@
 ;; ======
 
 (setq custom-file "~/.emacs-custom")
+
+(setq ido-use-virtual-buffers t)
 
 ;; Modes and Themes
 ;; ================
