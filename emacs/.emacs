@@ -189,6 +189,20 @@
 ;; ===========================
 ;; (Reference: http://cc-mode.sourceforge.net/html-manual/Syntactic-Symbols.html#Syntactic%20Symbols)
 
+; Indent HTML/Javascript with tabs rendered as four spaces
+(add-hook 'html-mode-hook
+          (lambda()
+            (setq tab-width 4)
+            (setq tab-stop-list (number-sequence 4 200 4))
+            (setq sgml-basic-offset 4)
+            (setq indent-tabs-mode nil)))
+(add-hook 'js2-mode-hook
+          (lambda()
+            (setq tab-width 4)
+            (setq tab-stop-list (number-sequence 4 200 4))
+            (setq js2-basic-offset 4)
+            (setq indent-tabs-mode nil)))
+
 ; HIO Java Style
 (c-add-style "hio-java"
 	     '("java-style-basis"
