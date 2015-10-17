@@ -19,6 +19,7 @@
     solarized-theme
     ergoemacs-mode
     multi-web-mode
+    less-css-mode
     markdown-mode
     magit
     find-file-in-project
@@ -201,6 +202,12 @@
             (setq tab-width 4)
             (setq tab-stop-list (number-sequence 4 200 4))
             (setq js2-basic-offset 4)
+            (setq indent-tabs-mode nil)))
+(add-hook 'css-mode-hook
+          (lambda()
+            (setq tab-width 4)
+            (setq tab-stop-list (number-sequence 4 200 4))
+            (setq css-indent-offset 4)
             (setq indent-tabs-mode nil)))
 
 ; HIO Java Style
