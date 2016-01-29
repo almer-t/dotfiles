@@ -55,10 +55,17 @@
 ;; Modes and Themes
 ;; ================
 
-(set-face-attribute 'default nil :font "Hack 10")
+(set-face-attribute 'default nil :font "Hack 12")
+(set-face-attribute 'default t :font "Hack 12")
+(set-default-font "Hack 12")
 
 ;; solarized-theme
 (load-theme 'solarized-dark t)
+
+;; Mark column 80
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
 
 ;; Indentation highlight
 ;;(require 'highlight-indentation)
