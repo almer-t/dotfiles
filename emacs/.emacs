@@ -121,6 +121,16 @@
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 ;;(multi-web-global-mode 1)
 
+;; markdown
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(autoload 'gfm-mode "gfm-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README.*\\.md\\'" . gfm-mode))
+
 ;; Keyboard Settings
 ;; =================
 
@@ -550,6 +560,13 @@
                 (goto-char beg)
                 (while (< (point) end)
                   (join-line 1))))) 
+
+(defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer 
+          (delq (current-buffer) 
+                (remove-if-not 'buffer-file-name (buffer-list)))))
 
 (defun remove-control-m () 
   "Remove all ^M's from a buffer" 
