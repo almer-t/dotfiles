@@ -141,6 +141,7 @@
 (global-set-key "\M-;" 'comment-dwim)
 (ergoemacs-mode 1)
 (put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
 (desktop-save-mode 1)
 
 ;; Smex (ido)
