@@ -45,6 +45,9 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+;; Server Start (emacsclient)
+(server-start)
+
 ;; Custom
 ;; ======
 
