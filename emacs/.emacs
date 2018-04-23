@@ -30,7 +30,6 @@
     flymake-python-pyflakes
     ipython
     rust-mode
-    jedi
     )
   "List of packages needs to be installed at launch")
 
@@ -122,8 +121,8 @@
 ;;(ac-config-default)
 
 ;; Standard Jedi.el setting
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:complete-on-dot t)
 
 ;; js2 mode
 (require 'js2-mode) 
