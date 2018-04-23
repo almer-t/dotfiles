@@ -24,12 +24,14 @@
     magit
     find-file-in-project
     py-yapf
-    company
-    company-jedi
+    auto-complete
+    jedi
+    helm
     highlight-indentation
     flymake-python-pyflakes
     ipython
     rust-mode
+    use-package
     )
   "List of packages needs to be installed at launch")
 
@@ -107,25 +109,29 @@
 (require 'flymake-python-pyflakes)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
-;; company
-(add-hook 'after-init-hook 'global-company-mode)
+;; autocomplete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
 
 ;; jedi
-(defun my/python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
-(add-hook 'python-mode-hook 'my/python-mode-hook)
+;;(defun my/python-mode-hook ()
+;;  (add-to-list 'company-backends 'company-jedi))
+;;(add-hook 'python-mode-hook 'my/python-mode-hook)
+;;(add-hook 'python-mode-hook 'run-python-internal)
+;;(add-hook 'python-mode-hook 'jedi:setup)
+;;(autoload 'jedi:setup "jedi" nil t)
+;;(setq jedi:complete-on-dot t)
 
-;; autocomplete
-;;(require 'auto-complete-config)
-;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-;;(ac-config-default)
-
-;; Standard Jedi.el setting
-;; (add-hook 'python-mode-hook 'jedi:setup)
-;; (setq jedi:complete-on-dot t)
+(use-package jedi
+ :config
+  (setq jedi:environment-virtualenv (list (expand-file-name "~/.emacs.d/.python-environments/")))
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (setq jedi:complete-on-dot t)
+  (setq jedi:use-shortcuts t))
 
 ;; js2 mode
-(require 'js2-mode) 
+(require 'js2-mode)
 
 ;; multi-web-mode load
 
