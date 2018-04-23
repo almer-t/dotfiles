@@ -29,6 +29,7 @@
     flymake-python-pyflakes
     ipython
     rust-mode
+    jedi
     )
   "List of packages needs to be installed at launch")
 
@@ -111,6 +112,10 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
+;; Standard Jedi.el setting
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
 ;; js2 mode
 (require 'js2-mode) 
 
@@ -143,6 +148,7 @@
 (require 'ergoemacs-mode)
 (global-set-key "\M-s" 'ergoemacs-end-of-line-or-what)
 (global-set-key "\M-;" 'comment-dwim)
+(global-set-key "\C-s" 'save-buffer)
 (ergoemacs-mode 1)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
