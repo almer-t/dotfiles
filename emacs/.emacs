@@ -24,7 +24,8 @@
     magit
     find-file-in-project
     py-yapf
-    auto-complete
+    company
+    company-jedi
     highlight-indentation
     flymake-python-pyflakes
     ipython
@@ -107,10 +108,18 @@
 (require 'flymake-python-pyflakes)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
+;; company
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; jedi
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+
 ;; autocomplete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
+;;(require 'auto-complete-config)
+;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;;(ac-config-default)
 
 ;; Standard Jedi.el setting
 (add-hook 'python-mode-hook 'jedi:setup)
