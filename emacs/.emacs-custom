@@ -3,10 +3,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ac-disable-inline t)
  '(package-selected-packages
    (quote
-    (jedi auto-complete smex js2-mode use-package solarized-theme rust-mode pythonic py-yapf persistent-soft multi-web-mode markdown-mode magit less-css-mode jedi-core ipython highlight-indentation helm flymake-python-pyflakes find-file-in-project ergoemacs-mode better-defaults))))
+    (ergoemacs-mode smex js2-mode yaml-mode use-package undo-tree solarized-theme rust-mode pythonic py-yapf persistent-soft multi-web-mode markdown-mode magit less-css-mode jedi ipython highlight-indentation helm flymake-python-pyflakes find-file-in-project better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

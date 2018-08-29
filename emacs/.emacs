@@ -31,6 +31,7 @@
     flymake-python-pyflakes
     ipython
     rust-mode
+    yaml-mode
     use-package
     )
   "List of packages needs to be installed at launch")
@@ -113,6 +114,7 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
+(setq ac-disable-inline t)
 
 ;; jedi
 ;;(defun my/python-mode-hook ()
