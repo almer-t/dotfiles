@@ -25,6 +25,9 @@
     find-file-in-project
     py-yapf
     auto-complete
+    go-mode
+    go-autocomplete
+    go-guru
     jedi
     helm
     highlight-indentation
@@ -33,6 +36,7 @@
     rust-mode
     yaml-mode
     use-package
+    yaml-mode
     )
   "List of packages needs to be installed at launch")
 
@@ -146,6 +150,11 @@
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 ;;(multi-web-global-mode 1)
 
+;; yaml mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
 ;; markdown
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
@@ -155,6 +164,13 @@
 ;; rust
 (autoload 'rust-mode "rust-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+
+;; Go
+(defun build-go-mode-hook ()
+  (make-local-variable 'compile-command)
+  (setq compile-command "go build -v")
+  (define-key go-mode-map (kbd "C-c C-c") #'compile))
+(add-hook 'go-mode-hook #'build-go-mode-hook)
 
 ;; Keyboard Settings
 ;; =================
